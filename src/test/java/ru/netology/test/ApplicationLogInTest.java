@@ -3,7 +3,7 @@ package ru.netology.test;
 import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import com.codeborne.selenide.Condition;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
@@ -24,7 +24,8 @@ public class ApplicationLogInTest {
         $("[data-test-id='login'] [name='login']").setValue(RequestData.getLogin());
         $("[data-test-id='password'] [name='password']").setValue(RequestData.getPassword());
         $("[data-test-id='action-login'] [class='button__text']").click();
-        $("h2").shouldHave(text("Личный кабинет"));
+        $("h2").shouldHave(text("Личный кабинет")).shouldBe(Condition.visible);
+
     }
 
     @Test
@@ -33,7 +34,9 @@ public class ApplicationLogInTest {
         $("[data-test-id=login] [name=login]").setValue(RequestData.getLogin());
         $("[data-test-id=password] [name=password]").setValue(RequestData.getPassword());
         $("[data-test-id=action-login] [class=button__text]").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(exactText("Ошибка! Пользователь заблокирован"));
+        $("[data-test-id='error-notification'] .notification__content")
+                .shouldHave(exactText("Ошибка! Пользователь заблокирован"))
+                .shouldBe(Condition.visible);
 
     }
 
@@ -43,7 +46,9 @@ public class ApplicationLogInTest {
         $("[data-test-id=login] [name=login]").setValue(RequestData.getLogin());
         $("[data-test-id=password] [name=password]").setValue(RequestData.getPassword());
         $("[data-test-id=action-login] [class=button__text]").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content")
+                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"))
+                .shouldBe(Condition.visible);
 
     }
 
@@ -53,7 +58,9 @@ public class ApplicationLogInTest {
         $("[data-test-id=login] [name=login]").setValue(RequestData.getLogin());
         $("[data-test-id=password] [name=password]").setValue(RequestData.getPassword());
         $("[data-test-id=action-login] [class=button__text]").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content")
+                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"))
+                .shouldBe(Condition.visible);
 
     }
 
@@ -63,7 +70,9 @@ public class ApplicationLogInTest {
         $("[data-test-id=login] [name=login]").setValue(RequestData.getLogin());
         $("[data-test-id=password] [name=password]").setValue(RequestData.getPassword());
         $("[data-test-id=action-login] [class=button__text]").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content")
+                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"))
+                .shouldBe(Condition.visible);
     }
 
 }
